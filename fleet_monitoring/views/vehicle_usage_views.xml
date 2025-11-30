@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_fleet_monitoring_vehicle_usage" model="ir.actions.act_window">
+        <field name="name">Vehicle Usage Requests</field>
+        <field name="res_model">fleet_monitoring.vehicle.usage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Buat permintaan penggunaan kendaraan baru.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_fleet_monitoring_vehicle_usage_tree" model="ir.ui.view">
+        <field name="name">fleet_monitoring.vehicle.usage.tree</field>
+        <field name="model">fleet_monitoring.vehicle.usage</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Usage Requests">
+                <field name="name"/>
+                <field name="applicant_id"/>
+                <field name="department_id"/>
+                <field name="vehicle_id"/>
+                <field name="usage_date"/>
+                <field name="destination"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fleet_monitoring_vehicle_usage_form" model="ir.ui.view">
+        <field name="name">fleet_monitoring.vehicle.usage.form</field>
+        <field name="model">fleet_monitoring.vehicle.usage</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Usage Request">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Masukkan Judul (Misal: Perjalanan Dinas ke...)" style="font-weight:bold;"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Request Details">
+                            <field name="applicant_id"/>
+                            <field name="job_title" readonly="1"/>
+                            <field name="department_id" readonly="1"/>
+                            <field name="request_date"/>
+                        </group>
+                        <group string="Usage Details">
+                            <field name="usage_date"/>
+                            <field name="vehicle_id"/>
+                            <field name="vehicle_type" readonly="1"/>
+                            <field name="start_time" widget="float_time"/>
+                            <field name="end_time" widget="float_time"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Destination">
+                            <field name="destination" placeholder="Masukkan alamat lengkap tujuan dan keperluannya..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
