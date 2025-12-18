@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_inherit_fleet" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.fleet</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            
+            <field name="picking_type_id" position="after">
+                <field name="is_fleet_service" invisible="1"/>
+            </field>
+
+            <xpath expr="//field[@name='origin']" position="after">
+                
+                <group string="Info Surat Pengantar / Service" 
+                       colspan="2" 
+                       invisible="not is_fleet_service">
+                    
+                    <group>
+                        <field name="vehicle_id" required="is_fleet_service"/>
+                        <field name="vehicle_type"/>
+                        <field name="driver_id"/>
+                        <field name="rute"/>
+                    </group>
+                    <group>
+                        <field name="spk_no" placeholder="No. SPK"/>
+                        <field name="spk_date" widget="date"/>
+                        <field name="pra_no" placeholder="No. PRA"/>
+                        <label for="odometer" string="Odometer"/>
+                        <div class="o_row">
+                            <field name="odometer" placeholder="Current"/>
+                            <span>Next:</span>
+                            <field name="next_odometer" placeholder="Next"/>
+                        </div>
+                        <field name="service_cost" widget="monetary"/>
+                    </group>
+                </group>
+
+            </xpath>
+            
+        </field>
+    </record>
+</odoo>

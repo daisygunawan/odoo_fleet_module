@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_fleet_monitoring_vehicle_document" model="ir.actions.act_window">
+        <field name="name">Vehicle Document Monitoring</field>
+        <field name="res_model">fleet_monitoring.vehicle.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new vehicle document monitoring record.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_fleet_monitoring_vehicle_document_tree" model="ir.ui.view">
+        <field name="name">fleet_monitoring.vehicle.document.tree</field>
+        <field name="model">fleet_monitoring.vehicle.document</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Document Records">
+                <field name="vehicle_id"/>
+                <field name="vehicle_model_id"/>
+                <field name="insurance_name"/>
+                <field name="tax_due_date"/>
+                <field name="plate_due_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fleet_monitoring_vehicle_document_form" model="ir.ui.view">
+        <field name="name">fleet_monitoring.vehicle.document.form</field>
+        <field name="model">fleet_monitoring.vehicle.document</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Document Record">
+                <sheet>
+                    <group>
+                        <group string="Vehicle Details">
+                            <field name="vehicle_id"/>
+                            <field name="vehicle_model_id"/>
+                            <field name="vehicle_user_id"/>
+                            <field name="vehicle_year"/>
+                        </group>
+                        <group string="Other">
+                            <field name="keur_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Asuransi (Insurance)">
+                            <group>
+                                <field name="insurance_name"/>
+                                <field name="insurance_period"/>
+                                <field name="insurance_premium" widget="monetary"/>
+                                <field name="insurance_premium_final" widget="monetary"/>
+                            </group>
+                        </page>
+                        <page string="Pajak (Tax) &amp; Plat">
+                            <group string="Pajak Tahunan (Annual Tax)">
+                                <field name="tax_due_date"/>
+                                <field name="tax_paid_date"/>
+                                <field name="tax_amount" widget="monetary"/>
+                            </group>
+                            <group string="Ganti Plat (Plate Renewal)">
+                                <field name="plate_due_date"/>
+                                <field name="plate_paid_date"/>
+                            </group>
+                        </page>
+                        <page string="Keterangan (Notes)">
+                            <field name="notes" placeholder="Add any extra notes here..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
