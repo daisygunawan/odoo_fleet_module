@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fm_checklist_car,access.fm.checklist.car,model_fleet_monitoring_checklist_car,base.group_user,1,1,1,1
+access_fm_checklist_motor,access.fm.checklist.motor,model_fleet_monitoring_checklist_motor,base.group_user,1,1,1,1
+access_fm_vehicle_usage,access.fm.vehicle.usage,model_fleet_monitoring_vehicle_usage,base.group_user,1,1,1,1
+access_fm_vehicle_service,access.fm.vehicle.service,model_fleet_monitoring_vehicle_service,base.group_user,1,1,1,1
+access_fm_vehicle_document,access.fm.vehicle.document,model_fleet_monitoring_vehicle_document,base.group_user,1,1,1,1

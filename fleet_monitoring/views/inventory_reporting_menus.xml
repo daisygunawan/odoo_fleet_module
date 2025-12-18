@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_fleet_surat_pengantar" model="ir.actions.act_window">
+        <field name="name">Surat Pengantar Service</field>
+        <field name="res_model">stock.picking</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_fleet_service', '=', True)]</field>
+        <field name="context">{
+            'default_is_fleet_service': True,
+            'default_picking_type_code': 'outgoing'
+        }</field>
+    </record>
+
+    <record id="action_fleet_log_detail" model="ir.actions.act_window">
+        <field name="name">Log Detail</field>
+        <field name="res_model">stock.picking</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_fleet_service', '=', True)]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <record id="view_picking_tree_fleet_log" model="ir.ui.view">
+        <field name="name">stock.picking.tree.fleet.log</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="is_fleet_service" column_invisible="True"/>
+                <field name="vehicle_id" optional="hide"/>
+                <field name="driver_id" optional="hide"/>
+                <field name="rute" optional="hide"/>
+                <field name="spk_no" optional="hide"/>
+                <field name="cost" optional="hide" sum="Total Cost"/>
+            </field>
+        </field>
+    </record>
+
+    <menuitem id="menu_fleet_surat_pengantar"
+              name="Surat Pengantar Service"
+              parent="stock.menu_stock_warehouse_mgmt"
+              action="action_fleet_surat_pengantar"
+              sequence="20"/>
+
+    <menuitem id="menu_fleet_log_detail"
+              name="Log Detail Armada"
+              parent="stock.menu_warehouse_report"
+              action="action_fleet_log_detail"
+              sequence="50"/>
+</odoo>

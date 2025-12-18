@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_fleet_monitoring_vehicle_service" model="ir.actions.act_window">
+        <field name="name">Vehicle Service Monitoring</field>
+        <field name="res_model">fleet_monitoring.vehicle.service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Buat catatan servis kendaraan baru.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_fleet_monitoring_vehicle_service_tree" model="ir.ui.view">
+        <field name="name">fleet_monitoring.vehicle.service.tree</field>
+        <field name="model">fleet_monitoring.vehicle.service</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Service Records">
+                <field name="service_date"/>
+                <field name="vehicle_id"/>
+                <field name="vehicle_model_id"/>
+                <field name="rute"/>
+                <field name="vendor_id"/>
+                <field name="description"/>
+                <field name="cost"/>
+                <field name="odometer"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fleet_monitoring_vehicle_service_form" model="ir.ui.view">
+        <field name="name">fleet_monitoring.vehicle.service.form</field>
+        <field name="model">fleet_monitoring.vehicle.service</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Service Record">
+                <sheet>
+                    <group>
+                        <group string="Vehicle Details">
+                            <field name="vehicle_id"/>
+                            <field name="vehicle_model_id"/>
+                            <field name="pengguna"/>
+                            <field name="vehicle_year"/>
+                        </group>
+                        <group string="Service Details">
+                            <field name="service_date"/>
+                            <field name="vendor_id"/>
+                            <field name="odometer"/>
+                            <field name="next_odometer"/>
+                            <field name="cost" widget="monetary"/>
+                        </group>
+                    </group>
+                    <group string="SPK / PRA Details">
+                        <field name="rute"/> 
+                        <field name="pra_no"/>
+                        <field name="spk_date"/>
+                        <field name="spk_no"/>
+                    </group>
+                    <notebook>
+                        <page string="Description of Service">
+                            <field name="description" placeholder="Masukkan detail servis yang dilakukan..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
